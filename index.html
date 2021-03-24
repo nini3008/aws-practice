@@ -12,24 +12,68 @@
         <i> finish this course in 3 weeks</i>
         <ul class="aws-course-titles">
             <li><a href="#regions">AWS Regions</a></li>
+            <li><a href="#iam">IAM</a></li>
+            <li><a href="#ec2">EC2</a></li>
         </ul>
 
         <div class="AWS-course-notes">
             <section id="regions">
                 <h3>AWS regions</h3>
                 <p>AWS has many Data centers around the world. These are called regions. the blue dots are regions that exist today and orange dots are coming down the pipe</p>
-                <p>Names can be us-east, eu-west-3...</p>
+
 
                 <p>A region is a cluster of data centers. most of the AWS services are region scoped</p>
 
                 <p>Each region has many availability zones. usually 3, min is 2, max is 6.</p>
 
-                <p>What is AWS Availability zones? -> AZ is one or more discrete data centers with redundant power, networking and connectivity. They are seprated from each other to avoid distasters. They are connected with high bandwidth, ultra-low latency networking</p>
+                <p>What is AWS Availability zones?  AZ is one or more discrete data centers with redundant power, networking and connectivity. They are seperated from each other to avoid distasters. They are connected with high bandwidth, ultra-low latency networking</p>
 
                 <p>This is the basis of how AWS works</p>
 
             </section>
-            </div>
+            <section id="iam">
+               <p>IAM stands for identity and Access Management</p>
+               <p>Your whole AWS security is there: </p>
+                <ul><li>Users</li><li>Groups</li><li>Roles</li></ul>
+                <p>Root Account should never be shared</p>
+                <p>Users must be created with proper permissions</p>
+                <p>IAM is at the center of AWS</p>
+                <p>policies are written in JSON</p>
+
+                <p>Users - usually a physical person</p>
+                <p>Roles - Internal usage within AWS resources. Specfically for the machine</p>
+                <p>groups can functions(Admins, devops), teams(engineering, design,,). They contain users</p>
+                <p>Policies defines what each can and cannot do.</p>
+
+                <h4>IAM introduction</h4>
+                <ul>
+                    <li>IAM has a global view</li>
+                    <li>Permisions are governed by Policies(JSON)</li>
+                    <li>MFA (Multifactor Authentication) can be setup</li>
+                    <li>IAM has predefined 'managed policies'</li>
+                    <li>its best to give users the minimal amount of permissions they need to perform their job(least privilege principles</li>
+                </ul>
+
+                <h4>IAM Federation </h4>
+                <p>Big enterprises usually integrate their own repository of users with IAM</p>
+                <p>Only Big enterprises uses this...nit part of the course but good to know for the exam</p>
+                <p>Identity federation user the SAML standard (Active directory)</p>
+
+                <h4>IAM 101 Brain Dump</h4>
+                <ul>
+                    <li>One IAM user per physical person</li>
+                    <li>One IAM role per application</li>
+                    <li>IAM credentials should NEVER be shared</li>
+                    <li>Never, ever,ever,ever, write IAM credentials in code. Ever</li>
+                    <li>And even less, Never commit ypur IAM credentials</li>
+                    <li>Never use the Root account except for initial setup</li>
+                    <li>Never use Root IAM credentials</li>
+                </ul>
+            </section>
+
+            <section id="ec2">
+
+            </section>
         </div>
     </div>
 </body>
