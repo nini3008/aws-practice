@@ -13,6 +13,8 @@
             <li><a href="#regions">AWS Regions</a></li>
             <li><a href="#iam">IAM</a></li>
             <li><a href="#ec2">EC2</a></li>
+            <li><a href="#awscloudhistory">AWS cloudhistory</a></li>
+            <li><a href="#awsfundamentals">Aws Fundamentals</a></li>
         </ul>
 
         <div class="AWS-course-notes">
@@ -73,7 +75,7 @@
             </section>
 
             <section id="ec2">
-                <h2>EC2</h2>
+                <h2>EC2 (Elastic Compute Cloud)</h2>
                 <h4>What is EC2?</h4>
                 <p>EC2 is one of the most popular of AWS offering</p>
                 <p>it mainly consists in the capability of:</p>
@@ -81,7 +83,7 @@
                     <li>Renting virtual machines (EC2)</li>
                     <li>Storing data on virtual drives (EBS) </li>
                     <li>Distributing load across machines (ELB)</li>
-                    <li>Scaling the services usiing an auto-scalling group (ASG)</li>
+                    <li>Scaling the services using an auto-scalling group (ASG)</li>
                 </ul>
                 <p>Knowing EC2 is fundamental to understand how the cloud works</p>
 
@@ -95,6 +97,120 @@
                     <li>Step 6: Add tags</li>
                     <li>Step 7: Configure security groups</li>
                     <li>Step 8: Review</li>
+                </ul>
+            </section>
+            <section id="awscloudhistory">
+                <h2>AWS cloud history</h2>
+                <ul>
+                    <li>2002 internally Launched</li>
+                    <li>2003, Amazon infrastructure is one of their core strength. idea to market</li>
+                    <li>2004, Launched publicly with SQS</li>
+                    <li>2006, Re-launched pubicly with SQS, S3, EC2</li>
+                    <li>2007, Launched in Europe</li>
+                </ul>
+
+                <h4>what can AWS be used for</h4>
+                <ul>
+                    <li>AWS enables you to build sophisticated, scalable applications</li>
+                    <li>Applicable to diverse set of industries</li>
+                    <li>Use cases include: Enterprise IT, Backup & Storage, Big Data analytics; website hosting, Mobile & Social Apps (backend) or gaming</li>
+                </ul>
+                <h4>AWS Regions</h4>
+                <p>AWS has regiols all around the world. Names can be us-east-1, eu-west-3 etc. A region us a cluster of data centers. Most AWS services are region scoped</p>
+
+                <h5>How to choose an AWS region? (possible exam question</h5>
+                <ul>
+                    <li>Compliance with data governance and legal reqiurements: data never leaves a region withput explicit permission</li>
+                    <li>Proximity to customers: reduced latency</li>
+                    <li>Available Services with region: new servcies and new features aren't available in every region</li>
+                    <li>Pricing: priving varies region to region and is transparent in the service pricing page</li>
+                </ul>
+                <h4>AWS AVailabilty zones</h4>
+                <ul>
+                    <li>Each region has mant availabily zones(usually 3, min 2, max is 6)</li>
+
+                </ul>
+            </section>
+            <section id="awsfundamentals">
+                <h2>High Availability & Scalability</h2>
+                <h3>Scalability</h3>
+                <p>Scalability means that an application can handle greater loads by adapting</p>
+                <p>There are two types of scalability: vertical scalabilty & Horizontal scalability(= elasticity)</p>
+
+                <h4>Vertical scalability</h4>
+                <p>Vertical Scalability means increasing the size of the instance</p>
+                <p>For Example, Your application runs on a t2.micro. scalling that application vertically means running it on a t2.large.</p>
+                <p>Verical scalability is very common for non distributed systems, such as a database. RDS, ElasticCache are services that can scale vertically. Theres usually a limit to how much you can vertically scale. (hardware limit</p>
+                <h4>Horizontal scalability</h4>
+                <p>Horizontal Scalability means increasing the number of instances/systems for your application</p>
+                <p>Horizontal scaling implies distirbuted systems. This is very comming for web applications/mordern applications. its easy to Horizontal scale thanks to the cloud offerings such as Amazon EC2</p>
+                <h3>High Availability</h3>
+                <p>High Availability usualy goes hand in hand with horizontal scaling.</p>
+                <p>High Scalability means running your applicayion/system in at least 2 data centers( == availability zones). The goal og high availability is to survive a data center loss. The high availability can be passive(for RDS Multi AZ for example). The high availability can be active for horizontal scaling.</p>
+
+                <h2>Load Balancing</h2>
+                <p>Load balancers are servers that forward internet traffic to multiple services(EC2 instances( downstream)</p>
+                <h4>why use a load balancer?</h4>
+                <ul>
+                    <li>Spread load across multiple downstream instances</li>
+                    <li>Expose a single point of access (DNS) to your application</li>
+                    <li>Seamlessly handle failures of downstream instances</li>
+                    <li>Do regular health checks to your instances</li>
+                    <li>Provide SSL termination(HTTPS) for your websites</li>
+                    <li>Enforce stickiness with cookies</li>
+                    <li>High availability across zones</li>
+                    <li>Spparate public traffic from private traffic</li>
+                </ul>
+                <h4>Why use an EC2 load Balancer?</h4>
+                <ul>
+                    <li>An ELB(EC2 load balance) is a managed load balancer.
+                        <ol>
+                            <li>AWS gaurantess that it will be working</li>
+                            <li>AWS takes care of upgrades, maintenance, high avaialibility</li>
+                            <li>AWS provides only a few configuration knobs</li>
+                        </ol>
+                    </li>
+                    <li>it cost less to setup your own load balancer but it will be a lot more effort on your end</li>
+                    <li>it is integrated with many AWS offerings/Services</li>
+                </ul>
+                <h3>Health Checks</h3>
+                <ul>
+                    <li>Health Checks are crucial for load balancers</li>
+                    <li>They enable load balancer to know if instances it forwards traffice to are available to reply to requests</li>
+                    <li>The health check is done on a portal and a route(/health is common</li>
+                    <li>if the response is not 200(OK), then the instance is unhealthy</li>
+                </ul>
+                <h3>Types of Load Balancer on AWS</h3>
+                <p>AWS has 3 kinds of load balancers</p>
+                <ul>
+                    <li>Classic Load Balancer(v1 - old generation) - 2009</li>
+                    <li>Application Load Balancer(v2 - new generation) - 2016</li>
+                    <li>Network Load Balancer(v2 - new generation) - 2017</li>
+                </ul>
+                <p>Overall is is recommnded to use newer/v2 generation load balancers as they provide more features. you can setup internal(private) or external (public) ELbS</p>
+                <h4>Load balancer Good to know</h4>
+                <ul>
+                    <li>LBs can scaled but not instantaneously - contact AWS for a "warm up"</li>
+                    <li>Troubleshooting
+                        <ul>
+                            <li>4xx errors are client induces errors</li>
+                            <li>5xx errors are application induced errors</li>
+                            <li>Load balancer errors 503 means at capacity or no registerd target</li>
+                            <li>if the LB can't connect to your application, check your security groyps</li>
+                        </ul>
+                    </li>
+                    <li>Monitoring
+                        <ul>
+                            <li>ELB access logs will log all access requests (so you can debug per request)</li>
+                            <li>CloudWatch Metrics will give you aggregrate statistics(ex: connections count)</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Classic Load Balancers</h4>
+                <ul>
+                    <li>Supports TCP (Layer 4), HTTP & HTTPS (Layer 7)</li>
+                    <li>Health checks are TCP or HTTP based</li>
+                    <li>Fixed hostname (xxx.region.elb.amazonaws.com)</li>
                 </ul>
             </section>
         </div>
